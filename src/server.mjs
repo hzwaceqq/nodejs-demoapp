@@ -9,7 +9,7 @@ console.log(`### 🚀 Node.js demo app v${packageJson.version} starting...`)
 
 // Dotenv handy for local config & debugging
 import { config as dotenvConfig } from 'dotenv'
-dotenvConfig()
+dotenvConfig(
 
 import appInsights from 'applicationinsights'
 
