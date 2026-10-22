@@ -28,27 +28,27 @@ if (navigator.geolocation) {
 }
 
 // Call our weather API with the given position
-async function getWeather(pos) {
-  const lat = pos.coords.latitude
-  const long = pos.coords.longitude
-  try {
-    const resp = await fetch(`/api/weather/${lat}/${long}`)
-    if (!resp.ok) throw `Fetch /api/weather/${lat}/${long} failed with ${resp.statusText}`
-    const data = await resp.json()
+// async function getWeather(pos) {
+//   const lat = pos.coords.latitude
+//   const long = pos.coords.longitude
+//   try {
+//     const resp = await fetch(`/api/weather/${lat}/${long}`)
+//     if (!resp.ok) throw `Fetch /api/weather/${lat}/${long} failed with ${resp.statusText}`
+//     const data = await resp.json()
 
-    weatherIcon.classList.add(`owi-${data.weather[0].icon}`)
-    locationSpan.textContent = ` - ${data.name}`
-    addWeatherDetails(`The weather currently is: &nbsp; ${data.weather[0].description}`)
-    addWeatherDetails(`Current temperature: &nbsp; ${data.main.temp}°C`)
-    addWeatherDetails(`Temperature feels like: &nbsp; ${data.main.feels_like}°C`)
-    addWeatherDetails(`Cloud cover: &nbsp; ${data.clouds.all}%`)
-    addWeatherDetails(`Volume of rain in last hour: &nbsp; ${data.rain ? data.rain['1h'] : 0}mm`)
-    addWeatherDetails(`Wind speed: &nbsp; ${(data.wind.speed * 2.24).toFixed(1)} mph`)
-  } catch (err) {
-    error.classList.add('show')
-    error.textContent = err
-  }
-}
+//     weatherIcon.classList.add(`owi-${data.weather[0].icon}`)
+//     locationSpan.textContent = ` - ${data.name}`
+//     addWeatherDetails(`The weather currently is: &nbsp; ${data.weather[0].description}`)
+//     addWeatherDetails(`Current temperature: &nbsp; ${data.main.temp}°C`)
+//     addWeatherDetails(`Temperature feels like: &nbsp; ${data.main.feels_like}°C`)
+//     addWeatherDetails(`Cloud cover: &nbsp; ${data.clouds.all}%`)
+//     addWeatherDetails(`Volume of rain in last hour: &nbsp; ${data.rain ? data.rain['1h'] : 0}mm`)
+//     addWeatherDetails(`Wind speed: &nbsp; ${(data.wind.speed * 2.24).toFixed(1)} mph`)
+//   } catch (err) {
+//     error.classList.add('show')
+//     error.textContent = err
+//   }
+// }
 
 function addWeatherDetails(details) {
   const li = document.createElement('li')
